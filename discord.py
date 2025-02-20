@@ -1,3 +1,9 @@
+######### import libraries
+import discord
+import time
+import asyncio
+
+######## configuration variables, probably should move this to its own include
 _BOT_NAME = "Cassandra"
 _PREFIX = "@" + _BOT_NAME + " "
 _START_COMMAND = "look"
@@ -5,6 +11,7 @@ _START_ACKNOWLEDGE = "👀"
 _END_COMMAND = "thoughts"
 _END_ACKNOWLEDGE = "🤔"
 _ERR_NO_START = "Please tell me where to start looking first?"
+_TOKEN = "!!!DISCORD TOKEN GO HERE!!!"
 
 # a Request is a block of channel history.
 class Request:
@@ -63,6 +70,10 @@ class Request:
 
 			
 
+######### basic Discord stuff
+client = discord.Client()
+
+######### global variables:
 # we have one global start and end message, for building a new request from user input
 start_message = None
 end_message = None
@@ -92,3 +103,5 @@ async def on_message(my_message):
 		# clear the start and end messages once we've completed the request
 		start_message = None
 		end_message = None
+
+client.run(token)
